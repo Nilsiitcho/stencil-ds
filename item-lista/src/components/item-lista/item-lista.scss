@@ -1,0 +1,32 @@
+.container {
+  font-family: sans-serif;
+  border: 1px solid #008561;
+  border-radius: 4px;
+  display: flex;
+  padding: 5px;
+  max-width:500px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: ease-in-out all 0.3s;
+
+  &:hover {
+    background: #f2f5f8;
+  }
+
+  .label {
+    color: #3c3d44;
+    margin-left: 10px;
+
+    &.checked{
+      text-decoration: line-through;
+      color: #9b9ca3;
+    }
+  }
+
+  .slotContainer{
+    margin-right: 15px;
+  }
+
+}
