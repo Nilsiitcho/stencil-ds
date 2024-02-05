@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ItemListaOpject } from "./components/item-lista/item-lista";
+export { ItemListaOpject } from "./components/item-lista/item-lista";
 export namespace Components {
     interface ItemLista {
         "checked": boolean;
@@ -18,7 +20,7 @@ export interface ItemListaCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLItemListaElementEventMap {
-        "itemChecked": boolean;
+        "itemChecked": ItemListaOpject;
     }
     interface HTMLItemListaElement extends Components.ItemLista, HTMLStencilElement {
         addEventListener<K extends keyof HTMLItemListaElementEventMap>(type: K, listener: (this: HTMLItemListaElement, ev: ItemListaCustomEvent<HTMLItemListaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -42,7 +44,7 @@ declare namespace LocalJSX {
     interface ItemLista {
         "checked"?: boolean;
         "label"?: string;
-        "onItemChecked"?: (event: ItemListaCustomEvent<boolean>) => void;
+        "onItemChecked"?: (event: ItemListaCustomEvent<ItemListaOpject>) => void;
         "value"?: number;
     }
     interface IntrinsicElements {

@@ -9,7 +9,7 @@
     <script nomodule src="/build/item-lista.js"></script>
   </head>
   <body>
-    <item-lista label="Teste Nilson" value="1500.99" checked="false">
+    <item-lista id="item-1" label="Teste Nilson" value="1500.99" checked="false">
       <span style="color: #008561; font-weight: bold; cursor: not-allowed" >
         Sankhya
       </span>
@@ -18,7 +18,7 @@
 
 <script>
   const body = document.querySelector("body");
-  body.addEventListener("itemChecked", (e) => window.alert(`Item atualizado para: ${e.detail}`));
+  body.addEventListener("itemChecked", (e) => console.log(e.detail));
 </script>
 
 </html>

@@ -1,4 +1,4 @@
-import {Component, h, Prop, Watch, Event, EventEmitter} from '@stencil/core';
+import {Component, h, Prop, Watch, Event, EventEmitter, Element} from '@stencil/core';
 import {toBRL} from "../../utils/currencyFormatter";
 
 @Component({
@@ -7,6 +7,9 @@ import {toBRL} from "../../utils/currencyFormatter";
   shadow: true,
 })
 export class ItemLista {
+
+  @Element()
+  _elemt: HTMLElement;
 
   @Prop()
   label: string;
@@ -17,16 +20,21 @@ export class ItemLista {
   @Prop({ mutable: true })
   checked = true;
 
-  @Event() itemChecked: EventEmitter<boolean>;
+  @Event() itemChecked: EventEmitter<ItemListaOpject>;
 
   @Watch("checked")
   watchChecked(newValue: boolean){
-    this.itemChecked.emit(newValue)
+    const item = {
+      id: this._elemt.id,
+      label: this.label,
+      value: this.value,
+      checked: newValue,
+    }
+    this.itemChecked.emit(item);
   }
 
   toggleCheckbox(){
     this.checked = !this.checked;
-    console.log(this.checked);
   }
 
   render() {
@@ -43,4 +51,11 @@ export class ItemLista {
       </div>
     );
   }
+}
+
+export interface ItemListaOpject {
+  id: string;
+  label: string;
+  value: number;
+  checkd?: boolean;
 }
