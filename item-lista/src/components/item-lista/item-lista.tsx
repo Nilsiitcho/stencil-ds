@@ -39,8 +39,8 @@ export class ItemLista {
 
   render() {
     return (
-      <div class={"container"} onClick={() => this.toggleCheckbox()}>
-        <div>
+      <div class={"container"}>
+        <div onClick={() => this.toggleCheckbox()}>
           <input type="checkbox" checked={this.checked}/>
           <span class={`label ${this.checked ? 'checked' : ''}`}>{this.label} (R${toBRL(this.value)})</span>
         </div>
